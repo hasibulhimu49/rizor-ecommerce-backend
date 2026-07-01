@@ -1,0 +1,48 @@
+spring:
+  application:
+    name: rizor-ecommerce-api
+
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: admin1234
+    url: jdbc:postgresql://localhost:5432/rizor-ecommerce-db
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+
+  mvc:
+    problemdetails:
+      enabled: true
+
+
+  flyway:
+    enabled: false
+
+
+logging:
+  level:
+    org:
+      springdoc: DEBUG
+
+
+
+security:
+  jwt:
+    secret-key: MY_SUPER_SECRET_KEY_123456789_123456789
+    expiration: 3600000
+
+
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true

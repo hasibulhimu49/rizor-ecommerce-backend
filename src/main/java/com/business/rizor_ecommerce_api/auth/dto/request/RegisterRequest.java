@@ -1,0 +1,29 @@
+package com.business.rizor_ecommerce_api.auth.dto.request;
+
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+public class RegisterRequest{
+
+    private String fullName;
+    @NotNull(message = "Username cannot be null")
+    @Pattern(regexp = "^[a-zA-Z0-9]{3,15}$",
+            message = "Username must be 3–15 characters and contain only letters and numbers")
+    private String username;
+
+    @NotNull(message = "Password cannot be null")
+    private String password;
+
+    @NotNull(message = "Email cannot be null")
+    @Email()
+    private String email;
+
+    private String phone;
+
+    private String address;
+}
