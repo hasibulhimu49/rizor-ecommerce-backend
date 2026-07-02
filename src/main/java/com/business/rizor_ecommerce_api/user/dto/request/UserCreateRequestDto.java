@@ -1,12 +1,14 @@
 package com.business.rizor_ecommerce_api.user.dto.request;
 
 import com.business.rizor_ecommerce_api.common.enums.Role;
+import com.business.rizor_ecommerce_api.user.entity.Address;
 import jakarta.persistence.Column;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import lombok.Getter;
 import lombok.Setter;
+import java.util.List;
 
 @Getter
 @Setter
@@ -24,7 +26,7 @@ public class UserCreateRequestDto {
     @Email
     private String email;
     private String phone;
-    private String address;
+    private List<Address> address;
 
     private Role role;
 }

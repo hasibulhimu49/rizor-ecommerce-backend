@@ -17,7 +17,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/users")
 @AllArgsConstructor
-@Tag(name = "User Management API", description = "APIs for managing users in the system")
+@Tag(name = "User  API", description = "APIs for managing users in the system")
 @SecurityRequirement(name = "bearerAuth")
 public class UserController {
 

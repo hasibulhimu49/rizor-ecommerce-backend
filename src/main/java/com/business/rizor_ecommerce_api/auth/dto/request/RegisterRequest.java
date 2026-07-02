@@ -1,10 +1,13 @@
 package com.business.rizor_ecommerce_api.auth.dto.request;
 
+import com.business.rizor_ecommerce_api.user.entity.Address;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.List;
 
 @Getter
 @Setter
@@ -25,5 +28,5 @@ public class RegisterRequest{
 
     private String phone;
 
-    private String address;
+    private List<Address> address;
 }

@@ -17,7 +17,7 @@ public class HomeController {
         response.put("documentation", "/swagger-ui/index.html");
         response.put("apiDocs", "/v3/api-docs");
         response.put("health", "/actuator/health");
-        response.put("github", "https://github.com/hasibulhimu49/personal-finance-tracker-backend");
+        response.put("github", "https://github.com/hasibulhimu49/rizor-ecommerce-backend");
         response.put("developer", "Mohammad Hasibul Hasan");
         response.put("email", "hasibulx2026@gmail.com");
         return response;

@@ -7,6 +7,9 @@ import lombok.Setter;
 
 import com.business.rizor_ecommerce_api.common.audit.BaseEntity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "users_table")
 @Getter
@@ -32,10 +35,16 @@ public class User extends BaseEntity {
     @Column(name = "phone")
     private String phone;
 
-    @Column(name = "address")
-    private String address;
-
     @Column(name = "assigning_role")
     @Enumerated(EnumType.STRING)
     private Role role;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Address> address = new ArrayList<>();
+
+//    @ElementCollection
+//    @CollectionTable(name = "paymenent_information",joinColumns = @JoinColumn(name = "userId"))
+//    private List<PaymentInformation> paymentInformations=new ArrayList<>();
+
+
 }
