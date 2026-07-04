@@ -36,11 +36,11 @@ public class ProductController {
     public ResponseEntity<Page<ProductResponseDto>> getAllProduct(@RequestParam(defaultValue = "0") int page,
                                                                   @RequestParam(defaultValue = "10") int size,
                                                                   @RequestParam(defaultValue = "id") String sortBy,
-                                                                  @RequestParam(defaultValue = "asc") String direction)
+                                                                  @RequestParam(defaultValue = "asc") String direction,Integer minPrice,Integer maxPrice)
     {
 
         Sort sort= direction.equalsIgnoreCase("desc")?Sort.by(sortBy).descending():Sort.by(sortBy).ascending();
-        return ResponseEntity.ok(service.getAllProduct(page,size,sort));
+        return ResponseEntity.ok(service.getAllProduct(page,size,sort,minPrice, maxPrice));
     }
 
     @PatchMapping("/{id}")

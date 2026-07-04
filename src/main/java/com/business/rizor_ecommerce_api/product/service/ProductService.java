@@ -16,7 +16,7 @@ public interface ProductService {
 
     ProductResponseDto getProductById(Long id);
 
-    Page<ProductResponseDto> getAllProduct(int page, int size, Sort sort);
+    Page<ProductResponseDto> getAllProduct(int page, int size, Sort sort,Integer minPrice,Integer maxPrice);
 
     ProductResponseDto updateProduct(Long id, ProductCreateRequestDto updateDto);
 

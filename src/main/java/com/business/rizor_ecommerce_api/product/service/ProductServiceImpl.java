@@ -1,6 +1,7 @@
 package com.business.rizor_ecommerce_api.product.service;
 
 import com.business.rizor_ecommerce_api.common.exception.ResourceNotFoundException;
+import com.business.rizor_ecommerce_api.product.ProductSpecification;
 import com.business.rizor_ecommerce_api.product.dto.request.ProductCreateRequestDto;
 import com.business.rizor_ecommerce_api.product.dto.response.ProductResponseDto;
 import com.business.rizor_ecommerce_api.product.entity.Product;
@@ -11,6 +12,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -37,12 +39,30 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public Page<ProductResponseDto> getAllProduct(int page, int size, Sort sort) {
+    public Page<ProductResponseDto> getAllProduct(
+            int page,
+            int size,
+            Sort sort,
+            Integer minPrice,
+            Integer maxPrice) {
 
-        Pageable pageable= PageRequest.of(page,size,Sort.by(sort));
-        Page<Product> products=repository.findAll(pageable);
-        Page<ProductResponseDto> response=products.map(mapper::toDto);
-        return response;
+        Specification<Product> specification = Specification.unrestricted();
+
+        if (minPrice != null) {
+            specification = specification.and(
+                    ProductSpecification.priceGreaterThan(minPrice));
+        }
+
+        if (maxPrice != null) {
+            specification = specification.and(
+                    ProductSpecification.priceLessThan(maxPrice));
+        }
+
+        Pageable pageable = PageRequest.of(page, size, sort);
+
+        Page<Product> products = repository.findAll(specification, pageable);
+
+        return products.map(mapper::toDto);
     }
 
     @Override
@@ -91,4 +111,10 @@ public class ProductServiceImpl implements ProductService{
          repository.delete(product);
          return null;
     }
+
+
+
+
 }
+
+
