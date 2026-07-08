@@ -6,6 +6,9 @@ import com.business.rizor_ecommerce_api.user.dto.response.UserResponseDto;
 import com.business.rizor_ecommerce_api.user.entity.User;
 import com.business.rizor_ecommerce_api.user.mapper.UserMapper;
 import com.business.rizor_ecommerce_api.user.repository.UserRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -39,10 +42,12 @@ public class UserServiceImpl implements UserService {
 
 
     //Get All User
-    public List<UserResponseDto> getAllUser()
+    public Page<UserResponseDto> getAllUser(int page)
     {
-        List<User> users=repository.findAll();
-        return users.stream().map(user->mapper.toDto(user)).toList();
+        Pageable pageable= PageRequest.of(page,10);
+        Page<User> users=repository.findAll(pageable);
+//        return users.stream().map(user->mapper.toDto(user)).toList();
+        return users.map(mapper::toDto);
     }
 
 

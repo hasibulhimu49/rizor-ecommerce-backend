@@ -10,6 +10,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -48,8 +49,10 @@ public class UserController {
             @ApiResponse(responseCode = "500", description = "Internal server error")
     })
     @GetMapping
-    public List<UserResponseDto> getAllUser() {
-        return service.getAllUser();
+    public Page<UserResponseDto> getAllUser(
+            @RequestParam(defaultValue = "0") int page
+    ) {
+        return service.getAllUser(page);
     }
 
 
