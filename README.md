@@ -1,259 +1,155 @@
-# Rizor E-Commerce Backend
+# BrainXNext Learning Platform - Backend API
 
-A scalable RESTful backend API for the **Rizor** clothing brand e-commerce platform. Built with **Node.js**, **Express.js**, and **MongoDB**, this backend powers product management, authentication, orders, payments, and customer accounts for a modern online fashion store.
+A robust and scalable RESTful API for the BrainXNext Learning Platform, built with Java, Spring Boot, and PostgreSQL. The API powers authentication, user management, course management, enrollments, and other core learning platform features.
+
+---
 
 ## 🚀 Features
 
-- 🔐 JWT Authentication & Authorization
-- 👤 Customer Account Management
-- 🛍️ Product Management
-- 👕 Clothing Categories & Collections
-- 📦 Inventory & Stock Management
-- 🛒 Shopping Cart API
-- ❤️ Wishlist Management
-- 📋 Order Processing
-- 💳 Payment Gateway Integration
-- 🚚 Shipping Address Management
-- ⭐ Product Reviews & Ratings
-- 🎟️ Coupon & Discount Support
-- 📊 Admin Dashboard APIs
-- 📁 Image Upload Support
-- 🔍 Search, Filter & Pagination
-- 📝 Input Validation & Error Handling
-- 📈 Secure RESTful API Design
+- Secure RESTful API
+- JWT Authentication & Authorization
+- Role-Based Access Control (Admin, Instructor, Student)
+- User Management
+- Course Management
+- Enrollment Management
+- Lesson Management
+- Quiz & Assignment APIs
+- Input Validation
+- Global Exception Handling
+- Pagination & Sorting
+- Database Integration with PostgreSQL
 
 ---
 
 ## 🛠️ Tech Stack
 
-- Node.js
-- Express.js
-- MongoDB
-- Mongoose
-- JWT (JSON Web Token)
-- bcrypt
-- Multer
-- Cloudinary (Optional)
-- dotenv
-- CORS
-- Cookie Parser
-- Express Validator
+- Java
+- Spring Boot
+- Spring Security
+- Spring Data JPA
+- PostgreSQL
+- Hibernate
+- Maven
+- Lombok
+- JWT Authentication
 
 ---
 
 ## 📂 Project Structure
 
 ```text
-rizor-ecommerce-backend/
-│
-├── src/
-│   ├── config/
-│   ├── controllers/
-│   ├── middleware/
-│   ├── models/
-│   ├── routes/
-│   ├── services/
-│   ├── utils/
-│   ├── validations/
-│   ├── app.js
-│   └── server.js
-│
-├── uploads/
-├── .env
-├── package.json
-└── README.md
+src
+├── main
+│   ├── java
+│   │   ├── config
+│   │   ├── controller
+│   │   ├── dto
+│   │   ├── entity
+│   │   ├── exception
+│   │   ├── repository
+│   │   ├── security
+│   │   ├── service
+│   │   └── BrainxnextApplication.java
+│   └── resources
+│       ├── application.properties
+│       └── static
+└── test
 ```
+
+---
+
+## ⚙️ Prerequisites
+
+- Java 21 (or later)
+- Maven
+- PostgreSQL
 
 ---
 
 ## 📦 Installation
 
-Clone the repository:
+Clone the repository
 
 ```bash
-git clone https://github.com/your-username/rizor-ecommerce-backend.git
+git clone https://github.com/your-username/brainxnext-learning-platform-backend.git
 ```
 
-Move into the project directory:
+Navigate to the project
 
 ```bash
-cd rizor-ecommerce-backend
+cd brainxnext-learning-platform-backend
 ```
 
-Install dependencies:
+Install dependencies
 
 ```bash
-npm install
-```
-
-Start the development server:
-
-```bash
-npm run dev
-```
-
-The server will start on:
-
-```text
-http://localhost:5000
+mvn clean install
 ```
 
 ---
 
-## 🔧 Environment Variables
+## 🗄️ Database Configuration
 
-Create a `.env` file in the project root.
+Configure your PostgreSQL database in `application.properties`.
 
-```env
-PORT=5000
+```properties
+spring.datasource.url=jdbc:postgresql://localhost:5432/brainxnext
+spring.datasource.username=postgres
+spring.datasource.password=your_password
 
-MONGODB_URI=mongodb://localhost:27017/rizor
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
 
-JWT_SECRET=your_jwt_secret
-
-JWT_EXPIRES_IN=7d
-
-CLIENT_URL=http://localhost:5173
-
-CLOUDINARY_CLOUD_NAME=your_cloud_name
-CLOUDINARY_API_KEY=your_api_key
-CLOUDINARY_API_SECRET=your_api_secret
-
-STRIPE_SECRET_KEY=your_stripe_secret_key
+spring.jpa.properties.hibernate.format_sql=true
 ```
 
 ---
 
-## 📌 API Modules
+## ▶️ Running the Application
 
-### Authentication
+```bash
+mvn spring-boot:run
+```
 
-- Register
-- Login
-- Logout
-- Refresh Token
-- Change Password
-- Forgot Password
-- Reset Password
+The application will start at:
 
-### Products
-
-- Get All Products
-- Get Product Details
-- Create Product
-- Update Product
-- Delete Product
-- Search Products
-- Filter by Category
-- Filter by Size
-- Filter by Color
-- Filter by Price
-
-### Categories
-
-- Create Category
-- Get Categories
-- Update Category
-- Delete Category
-
-### Orders
-
-- Create Order
-- Get User Orders
-- Get All Orders
-- Update Order Status
-- Cancel Order
-
-### Cart
-
-- Add to Cart
-- Update Quantity
-- Remove Item
-- Clear Cart
-
-### Wishlist
-
-- Add Item
-- Remove Item
-- Get Wishlist
-
-### Reviews
-
-- Add Review
-- Update Review
-- Delete Review
-- Get Product Reviews
-
-### Admin
-
-- Dashboard Statistics
-- Manage Products
-- Manage Users
-- Manage Orders
-- Inventory Reports
+```
+http://localhost:8080
+```
 
 ---
 
-## 🔒 Authentication
+## 🔐 Authentication
 
-Protected routes require a JWT access token.
+Protected endpoints require a JWT token.
 
-Example:
+Example header:
 
 ```http
-Authorization: Bearer <your_access_token>
+Authorization: Bearer YOUR_ACCESS_TOKEN
 ```
 
 ---
 
-## 📦 Scripts
+## 📚 API Endpoints
 
-```bash
-# Development
-npm run dev
-
-# Production
-npm start
-
-# Lint
-npm run lint
-```
-
----
-
-## 🧪 API Testing
-
-Use any API testing tool such as:
-
-- Postman
-- Insomnia
-- Thunder Client
+| Method | Endpoint | Description |
+|---------|----------|-------------|
+| POST | `/api/auth/register` | Register a new user |
+| POST | `/api/auth/login` | Login |
+| GET | `/api/users` | Get all users |
+| GET | `/api/courses` | Get all courses |
+| POST | `/api/courses` | Create a course |
+| PUT | `/api/courses/{id}` | Update a course |
+| DELETE | `/api/courses/{id}` | Delete a course |
 
 ---
 
-## 🤝 Contributing
-
-1. Fork the repository
-
-2. Create a new branch
+## 🧪 Running Tests
 
 ```bash
-git checkout -b feature/new-feature
+mvn test
 ```
-
-3. Commit your changes
-
-```bash
-git commit -m "Add new feature"
-```
-
-4. Push your branch
-
-```bash
-git push origin feature/new-feature
-```
-
-5. Open a Pull Request
 
 ---
 
@@ -267,8 +163,10 @@ This project is licensed under the MIT License.
 
 **Mohammad Hasibul Hasan**
 
-Backend Developer
+Java Backend Developer
+
+**Tech Stack:** Java • Spring Boot • Spring Security • PostgreSQL • Hibernate • REST API
 
 ---
 
-Built with ❤️ for the **Rizor** clothing brand.
+⭐ If you found this project helpful, consider giving it a star!
