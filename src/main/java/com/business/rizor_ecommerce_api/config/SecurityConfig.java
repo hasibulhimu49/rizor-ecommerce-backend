@@ -69,36 +69,37 @@ public class SecurityConfig {
                         // Auth APIs (Register/Login)
                         .requestMatchers("/api/v1/auth/register").permitAll()
                         .requestMatchers("/api/v1/auth/login").permitAll()
+                        .requestMatchers("/api/v1/**").permitAll()
 
 
-                        // Users API → Admin only
-                        .requestMatchers("/api/v1/users/**").hasRole("ADMIN")
-
-                        //Best Practice ( j kno 1 jaigai likle e hbe controller a na likle controller clean thake)
-                        // Transactions
-                        .requestMatchers(HttpMethod.GET, "/api/v1/transactions/**").hasRole("USER")
-                        .requestMatchers(HttpMethod.POST, "/api/v1/transactions").hasRole("USER")
-                        .requestMatchers(HttpMethod.PUT, "/api/v1/transactions/**").hasRole("USER")
-                        .requestMatchers(HttpMethod.DELETE, "/api/v1/transactions/**").hasRole("USER")
-
-                        .requestMatchers(HttpMethod.GET, "/api/v1/transactions/reports/**").hasRole("USER")
-                        .requestMatchers(HttpMethod.GET, "/api/v1/transactions/export").hasRole("ADMIN")
-
-
-
-                        //Dashboard
-                        .requestMatchers(HttpMethod.GET, "/api/v1/dashboard/summary").hasRole("USER")
-                        .requestMatchers(HttpMethod.GET, "/api/v1/dashboard/category-breakdown").hasRole("USER")
-
-                        //Category
-                        .requestMatchers(HttpMethod.GET, "/api/v1/categories/**").hasAnyRole("USER","ADMIN")
-                        .requestMatchers(HttpMethod.POST, "/api/v1/categories").hasAnyRole("USER","ADMIN")
-                        .requestMatchers(HttpMethod.PUT, "/api/v1/categories/**").hasAnyRole("USER","ADMIN")
-                        .requestMatchers(HttpMethod.DELETE, "/api/v1/categories/**").hasAnyRole("USER","ADMIN")
-
-                        //Budget
-                        .requestMatchers(HttpMethod.GET, "/api/v1/budgets/**").hasRole("USER")
-                        .requestMatchers(HttpMethod.POST, "/api/v1/budgets").hasRole("USER")
+//                        // Users API → Admin only
+//                        .requestMatchers("/api/v1/users/**").hasRole("ADMIN")
+//
+//                        //Best Practice ( j kno 1 jaigai likle e hbe controller a na likle controller clean thake)
+//                        // Transactions
+//                        .requestMatchers(HttpMethod.GET, "/api/v1/transactions/**").hasRole("USER")
+//                        .requestMatchers(HttpMethod.POST, "/api/v1/transactions").hasRole("USER")
+//                        .requestMatchers(HttpMethod.PUT, "/api/v1/transactions/**").hasRole("USER")
+//                        .requestMatchers(HttpMethod.DELETE, "/api/v1/transactions/**").hasRole("USER")
+//
+//                        .requestMatchers(HttpMethod.GET, "/api/v1/transactions/reports/**").hasRole("USER")
+//                        .requestMatchers(HttpMethod.GET, "/api/v1/transactions/export").hasRole("ADMIN")
+//
+//
+//
+//                        //Dashboard
+//                        .requestMatchers(HttpMethod.GET, "/api/v1/dashboard/summary").hasRole("USER")
+//                        .requestMatchers(HttpMethod.GET, "/api/v1/dashboard/category-breakdown").hasRole("USER")
+//
+//                        //Category
+//                        .requestMatchers(HttpMethod.GET, "/api/v1/categories/**").hasAnyRole("USER","ADMIN")
+//                        .requestMatchers(HttpMethod.POST, "/api/v1/categories").hasAnyRole("USER","ADMIN")
+//                        .requestMatchers(HttpMethod.PUT, "/api/v1/categories/**").hasAnyRole("USER","ADMIN")
+//                        .requestMatchers(HttpMethod.DELETE, "/api/v1/categories/**").hasAnyRole("USER","ADMIN")
+//
+//                        //Budget
+//                        .requestMatchers(HttpMethod.GET, "/api/v1/budgets/**").hasRole("USER")
+//                        .requestMatchers(HttpMethod.POST, "/api/v1/budgets").hasRole("USER")
 
 
 

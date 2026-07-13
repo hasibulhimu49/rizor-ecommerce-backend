@@ -19,7 +19,7 @@ import java.util.List;
 @RequestMapping("/api/v1/users")
 @AllArgsConstructor
 @Tag(name = "User  API", description = "APIs for managing users in the system")
-@SecurityRequirement(name = "bearerAuth")
+//@SecurityRequirement(name = "bearerAuth")
 public class UserController {
 
 
