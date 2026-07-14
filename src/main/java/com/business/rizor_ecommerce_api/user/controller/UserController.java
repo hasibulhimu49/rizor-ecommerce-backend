@@ -27,16 +27,16 @@ public class UserController {
 
 
 
-    //Post Users
-    @Operation(summary = "Create user", description = "Here Only admin can create user")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Successfully created user"),
-            @ApiResponse(responseCode = "500", description = "Internal server error")
-    })
-    @PostMapping
-    public UserResponseDto createUser(@RequestBody UserCreateRequestDto dto) {
-        return service.createUser(dto);
-    }
+//    //Post Users
+//    @Operation(summary = "Create user", description = "Here Only admin can create user")
+//    @ApiResponses(value = {
+//            @ApiResponse(responseCode = "200", description = "Successfully created user"),
+//            @ApiResponse(responseCode = "500", description = "Internal server error")
+//    })
+//    @PostMapping
+//    public UserResponseDto createUser(@RequestBody UserCreateRequestDto dto) {
+//        return service.createUser(dto);
+//    }
 
 
 
