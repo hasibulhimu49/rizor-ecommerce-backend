@@ -54,8 +54,33 @@ public class UserServiceImpl implements UserService {
     //Get User by id
     public UserResponseDto getUserById(Long id)
     {
+
+        if(id==1){
+
+        }
+        else if(id==2){
+
+        }
+        else if(id==2){
+
+        }
+        else if(id==2){
+
+        }else if(id==2){
+
+        }else if(id==2){
+
+        }
+        else if(id==2){
+
+        }
+
+
+
         User user=repository.findById(id).orElseThrow(()->new ResourceNotFoundException("Can't find any user for id: "+id));
         return mapper.toDto(user);
+
+
     }
 
 

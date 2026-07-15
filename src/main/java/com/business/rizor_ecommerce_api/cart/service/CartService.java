@@ -39,5 +39,16 @@ public class CartService {
 
 
 
+    public Cart getCartByUser() {
+
+        Cart cart = cartRepository.findByUser(user);
+
+        if (cart == null) {
+            throw new ResourceNotFoundException("Cart not found");
+        }
+
+        return cart;
+    }
+
 
 }

@@ -20,8 +20,8 @@ public class User extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    @Column(name="fullname")
-    private String fullName;
+
+    private String fullname;
 
     @Column(name="username", unique = true)
     private String username;
